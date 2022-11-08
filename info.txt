@@ -1,0 +1,77 @@
+git status
+git add . ou git add -A
+
+informações da sua identificação
+git config --global user.name
+git config --global user.email
+git config --global core.editor
+
+git config --list
+git commit -m ""
+git log
+
+--Como retornar a uma versão anterior do seu projeto---
+
+reset
+HEAD -> commit
+index -> stage
+Working Tree -> Diretorio
+
+reset -> tem subcomando
+-- hard : desfaz commit, desfaz o stage e altera o diretorio
+-- mixed : desfaz o commit, desfaz o stage
+-- soft : desfaz o commit
+
+git reset --soft chave_do-commit
+
+---Comando diff----
+comando git diff é capaz de trazer as diferenças entre o último commit e a versão atual dos arquivos
+git diff chave1 chave2
+git giff --no-prefix caminho/no_arquivo
+
+---mudar prefix--------
+git diff --src-prefix=antes --dst-prefix=depois
+git diff HEAD~1 HEAD src/a.js
+
+--Salvar mudança em um arquivo-----
+git diff > nome_arquivo.patch arquivo_modificado. Ex: git diff > altera.patch src/a.js
+
+---restaurar arquivo_modificado----
+git diff apply nome_arquivo. Ex: git diff apply altera.patch
+
+
+---branch ou ramificação------
+git branch
+--Criar novo branch--
+git branch nome_do_branch
+--Mudar de branch---
+git checkout nome_do_branch
+
+----Comparar os branch---
+git diff HEAD projeto_v1
+
+---Git LOG------
+git log -1: visualiza o ultimo commit com -2 os 2 ultimos
+git log -p -1 : mostra o patch
+git log -1 --stat: mostra a estatistica do projeto
+git log -2 --stat --pretty=oneline : mostra as informação em uma unica linha para melhor visualizar
+git log -1 --stat --pretty=format:"%an, %ar, %s, %h"-> informações: nome_de_quem_fez_commit, nome_do_commit, descrições do commit e chave_curta_do_commit
+
+
+
+----Criar branch-------
+git branch nome_do_branch
+git checkout -> verifica em qual branch estamos
+git checkout -b nome_do_branch -> crie e conecta no branch
+git branch -m nome_do_novo_branch -> renomear o nome do branch
+--excluir o branch remoto--
+git push origin --delete nome_do_branc_remoto
+---Atualizar branch remoto-----
+git push origin HEAD:nome_do_branch
+-----Vericar quantos branch tem no repositorio remoto---
+git branch -r
+---Modificado para branch diretamente no remoto-----
+git checkout origin/nome_do_branch_remoto
+
+--Fazer checkout diretamente no branch remoto----
+git checkout origin/nome_do_branc_remoto
